@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectInputCSharpWrapper", "DirectInputCSharpWrapper\DirectInputCSharpWrapper.csproj", "{72A6F29C-07F1-49A1-9030-4A52DD76D507}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrapperTest", "WrapperTest\WrapperTest.csproj", "{EEF0A6EC-3F13-4441-9D6E-89F6BAE8A470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectOutputCSharpWrapper", "DirectOutputCSharpWrapper\DirectOutputCSharpWrapper.csproj", "{72A6F29C-07F1-49A1-9030-4A52DD76D507}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEF0A6EC-3F13-4441-9D6E-89F6BAE8A470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEF0A6EC-3F13-4441-9D6E-89F6BAE8A470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEF0A6EC-3F13-4441-9D6E-89F6BAE8A470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEF0A6EC-3F13-4441-9D6E-89F6BAE8A470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72A6F29C-07F1-49A1-9030-4A52DD76D507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

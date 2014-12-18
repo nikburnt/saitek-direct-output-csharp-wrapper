@@ -50,13 +50,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DirectOutputTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DirectInputCSharpWrapper\DirectInputCSharpWrapper.csproj">
+    <ProjectReference Include="..\DirectOutputCSharpWrapper\DirectOutputCSharpWrapper.csproj">
       <Project>{72a6f29c-07f1-49a1-9030-4a52dd76d507}</Project>
-      <Name>DirectInputCSharpWrapper</Name>
+      <Name>DirectOutputCSharpWrapper</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
