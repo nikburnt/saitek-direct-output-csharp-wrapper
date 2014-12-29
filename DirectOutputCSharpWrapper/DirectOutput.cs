@@ -109,7 +109,7 @@ namespace DirectOutputCSharpWrapper {
 
 		private const String directOutputKey = "SOFTWARE\\Saitek\\DirectOutput";
 
-		private UInt32 hModule;
+		private IntPtr hModule;
 
 		/// <summary>
 		/// Creates DirectOutput wrapper
@@ -136,7 +136,6 @@ namespace DirectOutputCSharpWrapper {
 
 				libPath = (String)value;
 			}
-
 			hModule = DllHelper.LoadLibrary(libPath);
 
 			InitializeLibraryFunctions();
@@ -168,7 +167,7 @@ namespace DirectOutputCSharpWrapper {
 			sendServerFile = DllHelper.GetFunction<DirectOutput_SendServerFile>(hModule, "DirectOutput_SendServerFile");
 			saveFile = DllHelper.GetFunction<DirectOutput_SaveFile>(hModule, "DirectOutput_SaveFile");
 			displayFile = DllHelper.GetFunction<DirectOutput_DisplayFile>(hModule, "DirectOutput_DisplayFile");
-			deleteFile = DllHelper.GetFunction<DirectOutput_DeleteFile>(hModule, "DirectOutput_DeleteFile");		
+			deleteFile = DllHelper.GetFunction<DirectOutput_DeleteFile>(hModule, "DirectOutput_DeleteFile");	
 		}
 
 		/// <summary>

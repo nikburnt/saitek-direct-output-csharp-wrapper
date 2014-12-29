@@ -27,44 +27,35 @@ namespace DirectOutputCSharpWrapper {
 	class DllHelper {
 
 		[DllImport("kernel32.dll", EntryPoint = "LoadLibrary")]
-		private static extern UInt32 _LoadLibrary(string dllPath);
+		private static extern IntPtr _LoadLibrary(string dllPath);
 
 		[DllImport("kernel32.dll", EntryPoint = "GetProcAddress")]
-		private static extern IntPtr _GetProcAddress(UInt32 hModule, string procedureName);
+		private static extern IntPtr _GetProcAddress(IntPtr hModule, string procedureName);
 
 		[DllImport("kernel32.dll", EntryPoint = "FreeLibrary")]
-		private static extern bool _FreeLibrary(UInt32 hModule);
+		private static extern bool _FreeLibrary(IntPtr hModule);
 
 		[DllImport("kernel32.dll", EntryPoint = "GetLastError")]
 		private static extern int _GetLastError();
 
-		public static UInt32 LoadLibrary(string dllPath) {
-			UInt32 moduleHandle = _LoadLibrary(dllPath);
-
-			switch (moduleHandle) {
-				case 0:
-					throw new OutOfMemoryException();
-
-				case 2:
-					throw new FileNotFountException();
-
-				case 3:
-					throw new PathNotFountException();
-
-				case 11:
-					throw new BadFormatException();
-			}
-
-			if (moduleHandle <= 31) {
-				throw new UnknownException();
+		public static IntPtr LoadLibrary(string dllPath) {
+			IntPtr moduleHandle = _LoadLibrary(dllPath);
+			if (moduleHandle == new IntPtr(0)) {
+				throw new OutOfMemoryException();
+			} else if (moduleHandle == new IntPtr(2)) {
+				throw new FileNotFountException();
+			} else if (moduleHandle == new IntPtr(3)) {
+				throw new PathNotFountException();
+			} else if (moduleHandle == new IntPtr(11)) {
+				throw new BadFormatException();
 			}
 
 			return moduleHandle;
 		}
 
-		public static T GetFunction<T>(UInt32 hModule, string procedureName) where T : class {
+		public static T GetFunction<T>(IntPtr hModule, string procedureName) where T : class {
 			IntPtr addressOfFunctionToCall = _GetProcAddress(hModule, procedureName);
-			if (addressOfFunctionToCall.ToInt32() == 0) {
+			if (addressOfFunctionToCall == IntPtr.Zero) {
 				throw new Win32Exception(_GetLastError());
 			}
 
@@ -72,7 +63,7 @@ namespace DirectOutputCSharpWrapper {
 			return functionDelegate as T;
 		}
 
-		public static void FreeLibrary(UInt32 hModule) {
+		public static void FreeLibrary(IntPtr hModule) {
 			bool isLibraryUnloadedSuccessfully = _FreeLibrary(hModule);
 			if (!isLibraryUnloadedSuccessfully) {
 				throw new Win32Exception(_GetLastError());
