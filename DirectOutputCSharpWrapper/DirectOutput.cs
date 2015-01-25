@@ -57,7 +57,7 @@ namespace DirectOutputCSharpWrapper {
 		public delegate void EnumerateCallback(IntPtr device, IntPtr target);
 		public delegate void DeviceCallback(IntPtr device, bool added, IntPtr target);
 		public delegate void SoftButtonCallback(IntPtr device, UInt32 buttons, IntPtr target);
-		public delegate void PageCallback(IntPtr device, bool activated, IntPtr target);
+		public delegate void PageCallback(IntPtr device, Int32 page, bool activated, IntPtr target);
 
 		// Library functions
 		private delegate HResult DirectOutput_Initialize([MarshalAsAttribute(UnmanagedType.LPWStr)] String appName);
