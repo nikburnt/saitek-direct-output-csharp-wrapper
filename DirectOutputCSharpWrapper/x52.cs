@@ -13,7 +13,7 @@ namespace DirectOutputCSharpWrapper
         /// </summary>
         public List<Page> pages = new List<Page>();
 
-        public int currPage;
+        public int currPage = -1;
 
         public readonly DirectOutputExtended _context;
         public IntPtr _thisDevice { get; private set; }
