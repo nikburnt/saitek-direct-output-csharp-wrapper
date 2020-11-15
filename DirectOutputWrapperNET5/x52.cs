@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using DirectOutputWrapperNET5;
 
 namespace DirectOutputCSharpWrapper
 {
