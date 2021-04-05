@@ -1,10 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 using HResult = System.Int32;
 
-namespace DirectOutputCSharpWrapper
+namespace DirectOutputWrapperNET5
 {
     public struct SRequestStatus
     {
@@ -72,7 +72,7 @@ namespace DirectOutputCSharpWrapper
         public delegate void PageCallback(IntPtr device, Int32 page, bool activated, IntPtr target);
 
         // Library functions
-        private delegate HResult DirectOutput_Initialize([MarshalAsAttribute(UnmanagedType.LPWStr)]
+        private delegate HResult DirectOutput_Initialize([MarshalAs(UnmanagedType.LPWStr)]
             string appName);
 
         private delegate HResult DirectOutput_Deinitialize();
@@ -88,7 +88,7 @@ namespace DirectOutputCSharpWrapper
         private delegate HResult DirectOutput_GetDeviceInstance(IntPtr device, out Guid guidInstance);
 
         private delegate HResult DirectOutput_SetProfile(IntPtr device, Int32 fileNameLength,
-            [MarshalAsAttribute(UnmanagedType.LPWStr)]
+            [MarshalAs(UnmanagedType.LPWStr)]
             string filename);
 
         private delegate HResult DirectOutput_RegisterSoftButtonCallback(IntPtr device,
@@ -104,18 +104,18 @@ namespace DirectOutputCSharpWrapper
         private delegate HResult DirectOutput_SetLed(IntPtr device, Int32 page, Int32 index, Int32 value);
 
         private delegate HResult DirectOutput_SetString(IntPtr device, Int32 page, Int32 index, Int32 valueLength,
-            [MarshalAsAttribute(UnmanagedType.LPWStr)]
+            [MarshalAs(UnmanagedType.LPWStr)]
             string value);
 
         private delegate HResult DirectOutput_SetImage(IntPtr device, Int32 page, Int32 index, Int32 bufferlength,
             byte[] buffer);
 
         private delegate HResult DirectOutput_SetImageFromFile(IntPtr device, Int32 page, Int32 index,
-            Int32 fileNameLength, [MarshalAsAttribute(UnmanagedType.LPWStr)]
+            Int32 fileNameLength, [MarshalAs(UnmanagedType.LPWStr)]
             string filename);
 
         private delegate HResult DirectOutput_StartServer(IntPtr device, Int32 fileNameLength,
-            [MarshalAsAttribute(UnmanagedType.LPWStr)]
+            [MarshalAs(UnmanagedType.LPWStr)]
             string filename, out IntPtr serverId, out SRequestStatus status);
 
         private delegate HResult DirectOutput_CloseServer(IntPtr device, Int32 serverId, out SRequestStatus status);
@@ -124,11 +124,11 @@ namespace DirectOutputCSharpWrapper
             Int32 inBufferSize, byte[] inBuffer, Int32 outBufferSize, out byte[] outBuffer, out SRequestStatus status);
 
         private delegate HResult DirectOutput_SendServerFile(IntPtr device, Int32 serverId, Int32 request, Int32 page,
-            Int32 cbInHdr, IntPtr pvInHdr, Int32 fileNameLength, [MarshalAsAttribute(UnmanagedType.LPWStr)]
+            Int32 cbInHdr, IntPtr pvInHdr, Int32 fileNameLength, [MarshalAs(UnmanagedType.LPWStr)]
             string filename, Int32 cbOut, out IntPtr pvOut, out SRequestStatus status);
 
         private delegate HResult DirectOutput_SaveFile(IntPtr device, Int32 page, Int32 dwFile, Int32 fileNameLength,
-            [MarshalAsAttribute(UnmanagedType.LPWStr)]
+            [MarshalAs(UnmanagedType.LPWStr)]
             string filename, out SRequestStatus status);
 
         private delegate HResult DirectOutput_DisplayFile(IntPtr device, Int32 page, Int32 dwIndex, Int32 dwFile,
@@ -537,7 +537,7 @@ namespace DirectOutputCSharpWrapper
         /// <param name="index">A numeric identifier of the string. Refer to the data sheet for each device to determine what strings are present.</param>
         /// <param name="text">String that specifies the value to display. Providing a null pointer will clear the string.</param>
         /// <exception cref="HResultException"></exception>
-        public void SetString(IntPtr device, Int32 page, Int32 index, [MarshalAsAttribute(UnmanagedType.LPWStr)]
+        public void SetString(IntPtr device, Int32 page, Int32 index, [MarshalAs(UnmanagedType.LPWStr)]
             string text)
         {
             HResult retVal = setString(device, page, index, text.Length, text);

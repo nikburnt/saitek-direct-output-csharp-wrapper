@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-namespace DirectOutputCSharpWrapper
+namespace DirectOutputWrapperNET5
 {
 
     public class OutOfMemoryException : Exception
